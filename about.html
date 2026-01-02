@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About · Juan131ng</title>
+  <link rel="icon" href="img/favicon.jpg" type="image/jpeg">
+
+  <meta name="description" content="Juan的个人主页，关于我。">
+  <!-- 字体：衬线标题 + 净版正文 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --muted: #6b7280;
+      --accent: #7c3aed;
+      --border: #e5e7eb;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --text: #e5e7eb;
+        --muted: #9aa0aa;
+        --accent: #a78bfa;
+        --border: #1f2937;
+        --card: #111113;
+      }
+    }
+
+    .dark {
+      --bg: #0b0b0c;
+      --text: #e5e7eb;
+      --muted: #9aa0aa;
+      --accent: #a78bfa;
+      --border: #1f2937;
+      --card: #111113;
+    }
+
+    * { box-sizing: border-box }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; letter-spacing: 0.6px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+    .brand:hover { color: var(--accent) }
+    .nav-links {
+      display: flex; gap: 18px; flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 8px 12px; border-radius: 8px; color: var(--muted);
+      transition: all 160ms ease;
+    }
+    .nav-links a:hover { color: var(--accent) }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;
+      align-items: end; margin: 40px 0 24px;
+    }
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px; line-height: 1.2; margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 680px;
+    }
+    .poem {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px; color: var(--muted); font-style: italic;
+    }
+
+    .section { margin: 56px 0 }
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px; margin: 0 0 20px;
+      letter-spacing: 0.6px;
+    }
+    .grid {
+      display: grid; grid-template-columns: 1fr; gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--card); padding: 18px 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      will-change: transform;
+    }
+    .card h3 { margin: 4px 0 8px; font-size: 18px }
+    .card p { margin: 0; color: var(--muted) }
+    .meta { margin-top: 10px; font-size: 14px; color: var(--muted) }
+
+    .about-info {
+      display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;
+    }
+    .about-info img {
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+      border: 5px solid var(--accent); box-shadow: 0 4px 15px rgba(124,58,237,0.3);
+      flex-shrink: 0;
+    }
+    .about-content {
+      flex: 1; min-width: 300px;
+    }
+    .about-content p {
+      margin-bottom: 15px; font-size: 1.1rem;
+    }
+    .skills {
+      margin-top: 30px;
+    }
+    .skills h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; margin: 0 0 15px;
+      letter-spacing: 0.6px;
+    }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .skill-item {
+      background: var(--accent); color: #fff; padding: 8px 16px; border-radius: 20px;
+      font-size: 0.9rem; transition: all 0.3s ease;
+      will-change: transform;
+    }
+    .skill-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(124,58,237,0.4);
+    }
+
+    .footer {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); background: var(--card);
+      transition: all 160ms ease;
+      will-change: transform, border-color, box-shadow;
+    }
+    .btn:hover { 
+      border-color: var(--accent); 
+      box-shadow: 0 6px 18px rgba(124,58,237,0.15);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr }
+      .grid { grid-template-columns: 1fr 1fr }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr }
+      .title { font-size: 36px }
+    }
+
+    .accent-underline {
+      background: linear-gradient(transparent 70%, rgba(124,58,237,0.18) 30%);
+      padding: 0 4px;
+    }
+  </style>
+</head>
+  <body>
+  <div class="container">
+    <!-- 导航 -->
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" class="brand">Juan131ng</a>
+      <div class="nav-links">
+        <a href="articles.html">笔记</a>
+        <a href="gallery.html">作品</a>
+        <a href="about.html">关于</a>
+        <a href="contact.html">联系</a>
+      </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+      <div>
+        <h1 class="title">我，其实是动词，是我自己在营造我。</h1>
+        <p class="subtitle">
+          <span class="accent-underline">其实</span>，我常常凝视内心，思索存在的意义。矛盾与不安伴随我，却也让我更真实。
+        </p>
+      </div>
+      <div class="poem">
+        <p>如果必须坠落</p>
+        <p>就让我坠落</p>
+        <p>我会成为的那个人</p>
+        <p>一定会接住我</p>
+      </div>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title">关于我，不止关于我。</h2>
+      <div class="grid">
+        <article class="card">
+          <p>听粤语歌时，总会感受到一种独特的时空氛围。它不仅是旋律的流动，更像是记忆的回声。语言的韵律与情感的厚度，使我在音乐中不断追问：为何在此刻被触动？音乐成为一种存在的证据，它提醒我，情感并非虚无，而是生命最真实的质地。</p>
+          <br>
+          <p>摄影，尤其是胶片摄影，则让我在光影中思索时间的意义。每一次按下快门，都是一次不可逆的选择。胶片的颗粒感，仿佛在告诉我：时间不会停留，记忆也无法完全复刻。数码摄影的即时与可控，反而让我更清楚地意识到，正是胶片的不可控，才让影像更接近生命的本质——不确定、流动、稍纵即逝。</p>
+          <br>
+          <p>在旋律与光影之间，我看见了时间的两种形态：音乐是流动的时间，摄影是凝固的时间。它们共同构成了我思考自我的方式。音乐让我感受到情感的持续与延展，而摄影让我直面瞬间的消逝与永恒的矛盾。二者之间的张力，正是我存在的写照。</p>
+          <br>
+          <p>在这些片刻的捕捉与聆听中，我究竟在寻找什么？或许是对自我存在的确认，或许是对生命意义的追问。粤语歌与摄影并非只是兴趣，它们是我与世界对话的媒介，是我在有限生命中触摸无限的一种方式。</p>
+          <div class="meta">“为求独处的晚上，回望这一生的作品，能被你本身景仰。“   ————Dear Jane《多谢你自己》</div>
+        </article>
+      </div>
+    </section>
+
+   
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div>© Juan131ng</div>
+      <div>Made with patience · 一切都在路上</div>
+    </footer>
+  </div>
+
+</body>
+</html>

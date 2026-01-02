@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Juan131ng</title>
+  <meta name="description" content="Juan的个人主页，联系我。">
+  <link rel="icon" href="img/favicon.jpg" type="image/jpeg">
+  <!-- 字体：衬线标题 + 净版正文 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --muted: #6b7280;
+      --accent: #7c3aed;
+      --border: #e5e7eb;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --text: #e5e7eb;
+        --muted: #9aa0aa;
+        --accent: #a78bfa;
+        --border: #1f2937;
+        --card: #111113;
+      }
+    }
+
+    .dark {
+      --bg: #0b0b0c;
+      --text: #e5e7eb;
+      --muted: #9aa0aa;
+      --accent: #a78bfa;
+      --border: #1f2937;
+      --card: #111113;
+    }
+
+    * { box-sizing: border-box }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; letter-spacing: 0.6px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+    .brand:hover { color: var(--accent) }
+    .nav-links {
+      display: flex; gap: 18px; flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 8px 12px; border-radius: 8px; color: var(--muted);
+      transition: all 160ms ease;
+    }
+    .nav-links a:hover { color: var(--accent) }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;
+      align-items: end; margin: 40px 0 24px;
+    }
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px; line-height: 1.2; margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 680px;
+    }
+    .poem {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px; color: var(--muted); font-style: italic;
+    }
+
+    .section { margin: 56px 0 }
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px; margin: 0 0 20px;
+      letter-spacing: 0.6px;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--card); padding: 18px 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      will-change: transform;
+    }
+    .card:hover { transform: scale(1.02); box-shadow: 0 10px 24px rgba(0,0,0,0.08) }
+    .card h3 { margin: 4px 0 8px; font-size: 18px }
+    .card p { margin: 0; color: var(--muted) }
+    .meta { margin-top: 10px; font-size: 14px; color: var(--muted) }
+
+    .contact-container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      align-items: start;
+    }
+    .contact-info {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--card); padding: 24px;
+      border-left: 4px solid var(--accent);
+    }
+    .contact-info h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; margin: 0 0 20px;
+    }
+    .contact-info p {
+      margin-bottom: 16px; font-size: 1.1rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px; border: 2px solid var(--border); border-radius: 10px;
+      font-size: 1rem; background: var(--card); color: var(--text);
+      transition: all 160ms ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .contact-form textarea {
+      resize: vertical; min-height: 150px;
+    }
+    .contact-form button {
+      padding: 12px 24px; background: var(--accent); color: #fff;
+      border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 500;
+      cursor: pointer; transition: all 160ms ease;
+      will-change: transform, background, box-shadow;
+    }
+    .contact-form button:hover {
+      background: #6d28d9; transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(124,58,237,0.4);
+    }
+
+    .success-message {
+      background: #d4edda; color: #155724; padding: 15px; border-radius: 10px;
+      margin-top: 20px; display: none; border: 1px solid #c3e6cb;
+    }
+    .error {
+      border-color: #dc3545 !important;
+      box-shadow: 0 0 0 3px rgba(220,53,69,0.1) !important;
+    }
+    .error-message {
+      color: #dc3545; font-size: 0.8rem; margin-top: 5px; display: none;
+    }
+
+    .footer {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); background: var(--card);
+      transition: all 160ms ease;
+      will-change: transform, border-color, box-shadow;
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr }
+      .grid { grid-template-columns: 1fr 1fr }
+      .contact-container { grid-template-columns: 1fr }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr }
+      .title { font-size: 36px }
+    }
+
+    .accent-underline {
+      background: linear-gradient(transparent 70%, rgba(124,58,237,0.18) 30%);
+      padding: 0 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 导航 -->
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" class="brand">Juan131ng</a>
+      <div class="nav-links">
+        <a href="articles.html">笔记</a>
+        <a href="gallery.html">作品</a>
+        <a href="about.html">关于</a>
+        <a href="contact.html">联系</a>
+      </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+      <div>
+        <h1 class="title">期待与你相遇。</h1>
+        <p class="subtitle">
+          无论是 <span class="accent-underline">技术交流</span> 还是
+          <span class="accent-underline">合作机会</span>，都欢迎随时联系我。
+        </p>
+      </div>
+      <div class="poem">
+        <p>每一次连接，都是一次可能。</p>
+        <p>邮件、社交、或者一个简单的问候。</p>
+        <p>我在这里，等待有意义的对话。</p>
+      </div>
+    </section>
+
+    <!-- 联系信息 -->
+    <section class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系方式</h2>
+      <div class="contact-container">
+        <!-- 联系信息 -->
+        <div class="contact-info">
+          <h3>找到我</h3>
+          <p><strong>Mail：</strong>juan131ng@outlook.com</p>
+          <p><strong>QQ：</strong>2301585750</p>
+          <p><strong>Twitter：</strong>@danny131ng</p>
+          <p><strong>GitHub：</strong>Juan131ng</p>
+          <p><strong>位置：</strong>广东 · 中山</p>
+        </div>
+
+        <!-- 联系表单 -->
+        <form class="contact-form" id="contactForm">
+          <input type="text" id="name" name="name" placeholder="您的姓名" required>
+          <div class="error-message" id="nameError">请输入您的姓名</div>
+          
+          <input type="email" id="email" name="email" placeholder="您的邮箱" required>
+          <div class="error-message" id="emailError">请输入有效的邮箱地址</div>
+          
+          <input type="text" id="subject" name="subject" placeholder="留言主题" required>
+          <div class="error-message" id="subjectError">请输入留言主题</div>
+          
+          <textarea id="message" name="message" rows="5" placeholder="您的留言" required></textarea>
+          <div class="error-message" id="messageError">请输入您的留言内容</div>
+          
+          <button type="submit">发送留言</button>
+          <div class="success-message" id="successMessage">留言发送成功！感谢您的联系。</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 社交链接 -->
+    <section class="section" aria-labelledby="social-title">
+      <h2 id="social-title">社交网络</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>GitHub</h3>
+          <p>开源项目与代码分享</p>
+          <div class="meta">
+            <a class="btn" href="#">访问主页</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>博客</h3>
+          <p>技术文章与学习笔记</p>
+          <div class="meta">
+            <a class="btn" href="articles.html">阅读文章</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Notion</h3>
+          <p>知识管理与学习笔记</p>
+          <div class="meta">
+            <a class="btn" href="#">查看笔记</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div>© Juan131ng</div>
+      <div>Made with patience · 一切都在路上</div>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About · Juan131ng</title>
+  <meta name="description" content="Juan的个人主页，关于我。">
+  <!-- 字体：衬线标题 + 净版正文 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --muted: #6b7280;
+      --accent: #7c3aed;
+      --border: #e5e7eb;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --text: #e5e7eb;
+        --muted: #9aa0aa;
+        --accent: #a78bfa;
+        --border: #1f2937;
+        --card: #111113;
+      }
+    }
+
+    .dark {
+      --bg: #0b0b0c;
+      --text: #e5e7eb;
+      --muted: #9aa0aa;
+      --accent: #a78bfa;
+      --border: #1f2937;
+      --card: #111113;
+    }
+
+    * { box-sizing: border-box }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; letter-spacing: 0.6px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+    .brand:hover { color: var(--accent) }
+    .nav-links {
+      display: flex; gap: 18px; flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 8px 12px; border-radius: 8px; color: var(--muted);
+      transition: all 160ms ease;
+    }
+    .nav-links a:hover { color: var(--accent) }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;
+      align-items: end; margin: 40px 0 24px;
+    }
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px; line-height: 1.2; margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 680px;
+    }
+    .poem {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px; color: var(--muted); font-style: italic;
+    }
+
+    .section { margin: 56px 0 }
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px; margin: 0 0 20px;
+      letter-spacing: 0.6px;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--card); padding: 18px 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      will-change: transform;
+    }
+    .card:hover { transform: scale(1.02); box-shadow: 0 10px 24px rgba(0,0,0,0.08) }
+    .card h3 { margin: 4px 0 8px; font-size: 18px }
+    .card p { margin: 0; color: var(--muted) }
+    .meta { margin-top: 10px; font-size: 14px; color: var(--muted) }
+
+    .about-info {
+      display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap;
+    }
+    .about-info img {
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+      border: 5px solid var(--accent); box-shadow: 0 4px 15px rgba(124,58,237,0.3);
+      flex-shrink: 0;
+    }
+    .about-content {
+      flex: 1; min-width: 300px;
+    }
+    .about-content p {
+      margin-bottom: 15px; font-size: 1.1rem;
+    }
+    .skills {
+      margin-top: 30px;
+    }
+    .skills h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; margin: 0 0 15px;
+      letter-spacing: 0.6px;
+    }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .skill-item {
+      background: var(--accent); color: #fff; padding: 8px 16px; border-radius: 20px;
+      font-size: 0.9rem; transition: all 0.3s ease;
+      will-change: transform;
+    }
+    .skill-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(124,58,237,0.4);
+    }
+
+    .footer {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); background: var(--card);
+      transition: all 160ms ease;
+      will-change: transform, border-color, box-shadow;
+    }
+    .btn:hover { 
+      border-color: var(--accent); 
+      box-shadow: 0 6px 18px rgba(124,58,237,0.15);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr }
+      .grid { grid-template-columns: 1fr 1fr }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr }
+      .title { font-size: 36px }
+    }
+
+    .accent-underline {
+      background: linear-gradient(transparent 70%, rgba(124,58,237,0.18) 30%);
+      padding: 0 4px;
+    }
+  </style>
+</head>
+  <body>
+  <div class="container">
+    <!-- 导航 -->
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" class="brand">Juan131ng</a>
+      <div class="nav-links">
+        <a href="articles.html">笔记</a>
+        <a href="gallery.html">作品</a>
+        <a href="about.html">关于</a>
+        <a href="contact.html">联系</a>
+      </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+      <div>
+        <h1 class="title">在结构与美之间，搭一座安静的桥</h1>
+        <p class="subtitle">
+          我是 <span class="accent-underline">Juan131ng</span>，在校生与创作者。热爱把知识酿成清晰的系统，
+          用 Nuxt、TailwindCSS 与 Notion 打磨自己的数字空间，也用文字记录那些抵达前的微光与耐心。
+        </p>
+      </div>
+      <div class="poem">
+        <p>我把日常分门别类，像把风的纹理折进纸页。</p>
+        <p>一切都在路上：代码、练习、与自我相处的方式。</p>
+        <p>若你停留，也许能听见书页轻落的声音。</p>
+      </div>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title">关于我</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>学习与方法</h3>
+          <p>自律与结构化思考，擅长用系统理解复杂问题，偏爱把碎片整成清晰的路线图。</p>
+          <div class="meta">奖学金与项目实践，专注持续积累而非速成。</div>
+        </article>
+        <article class="card">
+          <h3>技术与工具</h3>
+          <p>前端实践：Nuxt、Vite、TailwindCSS；善于依赖管理与环境适配，偏爱优雅的配置与稳定的底层。</p>
+          <div class="meta">项目重构与路径排查是常态，宁可慢一点，也要稳一点。</div>
+        </article>
+        <article class="card">
+          <h3>美学与写作</h3>
+          <p>喜欢在留白中说话，用克制的设计表达温度。文字追求清晰、节奏与必要的静。</p>
+          <div class="meta">页面即诗，信息与呼吸同样重要。</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 技能展示 -->
+    <section class="section" aria-labelledby="skills-title">
+      <h2 id="skills-title">技能与工具</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>前端开发</h3>
+          <p>HTML5、CSS3、JavaScript、React、Vue.js、Nuxt</p>
+          <div class="meta">构建优雅的用户界面与交互体验</div>
+        </article>
+        <article class="card">
+          <h3>工具链</h3>
+          <p>Git、Vite、TailwindCSS、Notion、VS Code</p>
+          <div class="meta">高效的开发流程与知识管理</div>
+        </article>
+        <article class="card">
+          <h3>设计能力</h3>
+          <p>UI/UX设计、响应式设计、前端性能优化</p>
+          <div class="meta">注重用户体验与视觉美感</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div>© Juan131ng</div>
+      <div>Made with patience · 一切都在路上</div>
+    </footer>
+  </div>
+
+</body>
+</html>

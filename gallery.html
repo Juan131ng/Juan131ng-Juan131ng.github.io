@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery · Juan131ng</title>
+  <meta name="description" content="Juan的个人主页，作品展示。">
+  <link rel="icon" href="img/favicon.jpg" type="image/jpeg">
+  <!-- 字体：衬线标题 + 净版正文 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --muted: #6b7280;
+      --accent: #7c3aed;
+      --border: #e5e7eb;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --text: #e5e7eb;
+        --muted: #9aa0aa;
+        --accent: #a78bfa;
+        --border: #1f2937;
+        --card: #111113;
+      }
+    }
+
+    .dark {
+      --bg: #0b0b0c;
+      --text: #e5e7eb;
+      --muted: #9aa0aa;
+      --accent: #a78bfa;
+      --border: #1f2937;
+      --card: #111113;
+    }
+
+    * { box-sizing: border-box }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 24px; letter-spacing: 0.6px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+    .brand:hover { color: var(--accent) }
+    .nav-links {
+      display: flex; gap: 18px; flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 8px 12px; border-radius: 8px; color: var(--muted);
+      transition: all 160ms ease;
+    }
+    .nav-links a:hover { color: var(--accent) }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px;
+      align-items: end; margin: 40px 0 24px;
+    }
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px; line-height: 1.2; margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 680px;
+    }
+    .poem {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px; color: var(--muted); font-style: italic;
+    }
+
+    .section { margin: 56px 0 }
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px; margin: 0 0 20px;
+      letter-spacing: 0.6px;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--card); padding: 18px 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      overflow: hidden;
+      will-change: transform;
+    }
+    .card:hover { transform: scale(1.02); box-shadow: 0 10px 24px rgba(0,0,0,0.08) }
+    .card h3 { margin: 4px 0 8px; font-size: 18px }
+    .card p { margin: 0; color: var(--muted) }
+    .meta { margin-top: 10px; font-size: 14px; color: var(--muted) }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 160ms ease;
+      cursor: pointer;
+      will-change: transform;
+    }
+    .gallery-item:hover {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 160ms ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-item .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 15px;
+      transform: translateY(100%);
+      transition: all 160ms ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    .gallery-item h4 {
+      margin: 0 0 5px;
+      font-size: 16px;
+      font-family: "Playfair Display", serif;
+    }
+    .gallery-item p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .showcase {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px;
+    }
+    .art {
+      border: 1px dashed var(--border); border-radius: 14px; padding: 18px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent);
+    }
+
+    .footer {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); background: var(--card);
+      transition: all 160ms ease;
+      cursor: pointer;
+      will-change: transform, border-color, box-shadow;
+    }
+    .btn:hover { 
+      border-color: var(--accent); 
+      box-shadow: 0 6px 18px rgba(124,58,237,0.15);
+      transform: scale(1.02);
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr }
+      .grid { grid-template-columns: 1fr 1fr }
+      .showcase { grid-template-columns: 1fr }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr }
+      .title { font-size: 36px }
+    }
+
+    .accent-underline {
+      background: linear-gradient(transparent 70%, rgba(124,58,237,0.18) 30%);
+      padding: 0 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 导航 -->
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" class="brand">Juan131ng</a>
+      <div class="nav-links">
+        <a href="articles.html">笔记</a>
+        <a href="gallery.html">作品</a>
+        <a href="about.html">关于</a>
+        <a href="contact.html">联系</a>
+      </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+      <div>
+        <h1 class="title">用镜头记录美好瞬间。</h1>
+        <p class="subtitle">
+          从 <span class="accent-underline">数码</span> 到
+          <span class="accent-underline">胶片</span>，每一件作品都是对生活的观察与表达。
+        </p>
+      </div>
+      <div class="poem">
+        <p>镜头是第三只眼睛，看见平时忽略的细节。</p>
+        <p>在这里，我展示那些特别喜爱的作品。</p>
+      </div>
+    </section>
+
+    <!-- 摄影作品 -->
+    <section class="section" aria-labelledby="photo-title">
+      <h2 id="photo-title">Modest captures</h2>
+      <div class="grid">
+        <div class="gallery-item">
+          <img src="img/mmexport1736700911936.jpg" alt="孤独的树">
+          <div class="gallery-overlay">
+            <h4>孤独的树</h4>
+            <p>拍摄于金钟水库</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/mmexport1745817766032.jpg" alt="樱花">
+          <div class="gallery-overlay">
+            <h4>樱花</h4>
+            <p>拍摄于龟山电视塔下</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/mmexport1745817785195.jpg" alt="樱花">
+          <div class="gallery-overlay">
+            <h4>樱花</h4>
+            <p>拍摄于东湖樱花园</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/mmexport1736700928465.jpg" alt="蝴蝶小憩">
+          <div class="gallery-overlay">
+            <h4>蝴蝶小憩</h4>
+            <p>拍摄于金钟湖</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300/30cfd0/ffffff?text=古建筑" alt="古建筑">
+          <div class="gallery-overlay">
+            <h4>古建筑</h4>
+            <p>拍摄于北京故宫</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300/a8edea/ffffff?text=湖光山色" alt="湖光山色">
+          <div class="gallery-overlay">
+            <h4>湖光山色</h4>
+            <p>拍摄于杭州西湖</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div>© Juan131ng</div>
+      <div>Made with patience · 一切都在路上</div>
+    </footer>
+  </div>
+
+</body>
+</html>
